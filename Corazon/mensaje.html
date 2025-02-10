@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corazón con Mensaje</title>
+    <style>
+        @keyframes float {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh);
+        opacity: 0;
+    }
+}
+
+.heart-float {
+    position: absolute;
+    bottom: 0;
+    font-size: 2rem;
+    animation: float 4s linear infinite;
+    color: red;
+}
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffe6e6;
+            flex-direction: column;
+            position: relative;
+        }
+        .heart {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            transform: rotate(-45deg);
+            box-shadow: -10px 10px 90px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .heart:before,
+        .heart:after {
+            content: "";
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border-radius: 50%;
+        }
+        .heart:before {
+            top: -50px;
+            left: 0;
+        }
+        .heart:after {
+            left: 50px;
+            top: 0;
+        }
+        .message {
+            position: absolute;
+            top: 120px;
+            font-size: 20px;
+            color: #d60000;
+            font-weight: bold;
+        }
+        .images-container {
+            position: absolute;
+            top: 200px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+        }
+        .images-container img {
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+        .my-photo{
+    border-radius: 8px;
+    max-height: 11.25rem;
+    max-width: 11.25rem;
+    height: 11.25rem;
+    width: 11.25rem;
+    margin-top: 7rem; 
+    margin-bottom: 1.5625rem;
+    margin-left: auto;
+    margin-right: auto;
+    transition: all .4s ease-in-out;}
+    
+    </style>
+</head>
+<body>
+    <div class="heart" onclick="mostrarMensaje()"></div>
+
+    <div class="message">¿Quieres ser mi San Valentín? ❤️</div>
+    
+    <div class="images-container">
+        <img src="fotos/Imagen de WhatsApp 2025-01-24 a las 21.44.18_d77df2bb.jpg" alt="Imagen 1" class="my-photo">
+        <img src="fotos/Imagen de WhatsApp 2025-01-24 a las 22.26.15_13bf8b52.jpg" alt="Imagen 2" class="my-photo">
+        <img src="fotos/Imagen de WhatsApp 2025-01-27 a las 22.26.41_43589cf0.jpg" alt="Imagen 3" class="my-photo">
+        <img src="fotos/Imagen de WhatsApp 2025-02-04 a las 08.32.47_4a5bb7dc.jpg" alt="Imagen 4" class="my-photo">
+    </div>
+    <script>
+        function mostrarMensaje() {
+            alert("¿Quieres ser mi San Valentín? ❤️");
+        }
+
+        function lanzarCorazones() {
+    let heart = document.createElement("div");
+    heart.classList.add("heart-float");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";  // Posición aleatoria en el ancho de la pantalla
+    heart.style.animationDuration = (Math.random() * 2 + 3) + "s"; // Duración aleatoria entre 3 y 5 segundos
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 5000);
+}
+
+// Hacer que los corazones aparezcan de forma automática cada 500ms
+setInterval(lanzarCorazones, 50);
+
+    </script>
+</body>
+</html>
